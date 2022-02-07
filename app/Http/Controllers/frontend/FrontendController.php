@@ -28,7 +28,8 @@ class FrontendController extends Controller
             $category = Category::where('id', $id)->first();
 
             return view('frontend.pages.products.index', [
-                'CategoryProducts' => $category->products()->where('status', 0)->get(),
+            'category' => Category::where('id', $id)->first(),
+            'CategoryProducts' => $category->products()->where('status', 0)->get(),
             ]);
 
         } else {

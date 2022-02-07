@@ -4,6 +4,8 @@
 @endsection
 @section('content')
 
+ 
+
     <div class="row">
         <h3 class="mt-3 mb-0 pb-0">Featured Products</h3>
         <div class="owl-carousel feautured-carousel owl-theme">

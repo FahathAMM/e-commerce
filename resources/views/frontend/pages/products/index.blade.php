@@ -3,7 +3,12 @@
     e-shop
 @endsection
 @section('content')
-
+    <nav aria-label="breadcrumb" class="bg-light p-2 mb-2">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Collection</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ $category->name }}</li>
+        </ol>
+    </nav>
     <div class="row">
         <h3 class="mt-3 mb-0 pb-0">Featured Categories</h3>
         @forelse ($CategoryProducts as $CategoryProduct)

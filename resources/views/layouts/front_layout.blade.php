@@ -28,6 +28,8 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <!-- Nucleo Icons -->
 
     <!-- Font Awesome Icons -->
@@ -50,7 +52,6 @@
 
 <body>
     @include('frontend.includes.navbar')
-
     @if (request()->is('/'))
         @include('frontend.includes.slider')
     @endif
@@ -71,8 +72,8 @@
 </html>
 
 
-{{-- <script>
-    $('document').ready(function() {
-        alert('dd');
-    })
-</script> --}}
+<script>
+    // $('document').ready(function() {
+    //     alert('dd');
+    // })
+</script>

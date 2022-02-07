@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CartController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
@@ -43,4 +44,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     // products
     Route::Resource('/products', ProductController::class);
 
+// Cart
+    Route::post('/add-cart', [CartController::class, 'addToCart']);
 });

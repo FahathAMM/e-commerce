@@ -1,8 +1,10 @@
 @extends('layouts.front_layout')
 @section('title')
-    e-shop
+    E-Shop
 @endsection
 @section('content')
+
+   
 
     <div class="row">
         <h3 class="mt-3 mb-0 pb-0">Categories</h3>
