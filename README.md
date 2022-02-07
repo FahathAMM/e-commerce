@@ -8,7 +8,7 @@ Laravel ecommerce is built in laravel 8 version and MySQL database for the backe
 
 Laravel ecommerce has various features listed below:
 
-Customer Side:
+ <h3>Customer Side:</h3>
 
 Login and Register
 
@@ -33,16 +33,24 @@ User can rate a product, out of 5 stars, only after purchasing the product
 User can review a product only after purchasing the product
 
 User can edit and update his ratings and reviews
-Admin Side:
 
+
+<h3>Admin Side:</h3>
 
 Category CRUD
+
 Product CRUD
+
 Control the visibility of product and category (Hide/Show)
+
 All Statistics on Dashboard (Total Orders, Uses, Completed Orders, etc)
+
 View Order and order items
+
 Update Order status
+
 View registered users
+
 
 
 <h2>Requirements</h2>
