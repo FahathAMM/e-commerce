@@ -11,18 +11,30 @@ Laravel ecommerce has various features listed below:
 Customer Side:
 
 Login and Register
+
 Product quantity increment/decrement before adding to cart
+
 Add to Cart
+
 Add to Wishlist
+
 Add to cart with product quantity increment/decrement from the Cart and Wishlist page.
+
 Checkout information validation before placing order
+
 Checkout Page
+
 Multiple payment option during checkout - PayPal , Razorpay and Cash on Delivery
+
 View orders and order status
+
 User can rate a product, out of 5 stars, only after purchasing the product
+
 User can review a product only after purchasing the product
+
 User can edit and update his ratings and reviews
 Admin Side:
+
 
 Category CRUD
 Product CRUD
