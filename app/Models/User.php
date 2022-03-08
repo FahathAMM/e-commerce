@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use App\Models\Product;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+
+        'role_as',
+        'first_name',
+        'last_name',
+        'address_one',
+        'mobile',
+        'address_two',
+        'city',
+        'district',
+        'country',
+        'pin_code',
     ];
 
     /**
@@ -44,6 +56,16 @@ class User extends Authenticatable
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'carts')->withTimestamps();
+        return $this->belongsToMany(Product::class, 'carts')->withTimestamps()->withPivot('product_qty');
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

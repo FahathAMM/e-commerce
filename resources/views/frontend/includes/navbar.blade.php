@@ -9,12 +9,12 @@
 
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item ">
-                    <a href="{{ route('frontend.index') }}" id="navbarDropdown" class="nav-link " >
+                    <a href="{{ route('frontend.index') }}" id="navbarDropdown" class="nav-link ">
                         Home
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="{{ route('frontend.category') }}" id="navbarDropdown" class="nav-link " >
+                    <a href="{{ url('category') }}" id="navbarDropdown" class="nav-link ">
                         Category
                     </a>
                 </li>
@@ -30,6 +30,9 @@
                         </li>
                     @endif
                 @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/cart') }}">Cart</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

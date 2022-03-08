@@ -56,14 +56,19 @@
         @include('frontend.includes.slider')
     @endif
 
-    <div class="container my-3">
-        @yield('content')
+    @if (request()->is('checkout'))
+        <div class="m-3 p-4">
+        @else
+            <div class="container my-3">
+    @endif
+    @yield('content')
     </div>
 
     <x-alert />
     <script src="{{ asset('frontend/js/jquery.js') }}" rel="stylesheet"></script>
     <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
 
     @stack('scripts')
 

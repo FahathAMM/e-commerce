@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -51,11 +52,35 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    // public function logout(Request $request)
+    // {
+
+    //     $role = Auth::user()->role_as;
+    //     DB::table('session')->insert(['is_admin' => $role]);
+
+    //     $this->guard()->logout();
+
+    //     $request->session()->invalidate();
+
+    //     $request->session()->regenerateToken();
+
+    //     if ($response = $this->loggedOut($request)) {
+    //         return $response;
+    //     }
+
+    //     $is_admin = DB::table('session')->where(['is_admin' => $role])->first();
+
+    //     return $is_admin->is_admin == 1 ? redirect('/login') : redirect('/');
+
+    //     // return $request->wantsJson()
+    //     // ? new JsonResponse([], 204)
+    //     // : redirect('/login');
+    // }
+
     public function logout(Request $request)
     {
 
-        $role = Auth::user()->role_as;
-        DB::table('session')->insert(['is_admin' => $role]);
+        Cache::put('auth', $role = Auth::user()->role_as);
 
         $this->guard()->logout();
 
@@ -67,13 +92,8 @@ class LoginController extends Controller
             return $response;
         }
 
-        $is_admin = DB::table('session')->where(['is_admin' => $role])->first();
+        $is_admin = cache('auth');
 
-        return $is_admin->is_admin == 1 ? redirect('/login') : redirect('/');
-
-        // return $request->wantsJson()
-        // ? new JsonResponse([], 204)
-        // : redirect('/login');
+        return $is_admin == 1 ? redirect('/login') : redirect('/');
     }
-
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\CartController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,16 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 
     // products
     Route::Resource('/products', ProductController::class);
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::get('/checkout', [CheckoutController::class, 'index']);
+    Route::post('/place-order', [CheckoutController::class, 'placeOrder']);
+});
+
 
 // Cart
-    Route::post('/add-cart', [CartController::class, 'addToCart']);
-});
+Route::post('/add-cart', [CartController::class, 'addToCart']);
+Route::delete('/cart-delete', [CartController::class, 'delete']);
+Route::put('/update-quantity', [CartController::class, 'updateQuantity']);

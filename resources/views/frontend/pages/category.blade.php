@@ -3,15 +3,12 @@
     E-Shop
 @endsection
 @section('content')
-
-   
-
     <div class="row">
         <h3 class="mt-3 mb-0 pb-0">Categories</h3>
         <div class="owl-carousel feautured-carousel owl-theme">
             @forelse ($Categories as $Category)
                 <div class="col-3 item py-3">
-                    <a href="{{ route('frontend.view.category', ['slug' => $Category->slug]) }}">
+                    <a href="{{ route('frontend.view.category', ['id' => $Category->slug]) }}">
                         <div class="card" style="width: 20rem;">
                             <img width="200" height="320" src='{{ asset("storage/$Category->image") }}'
                                 class="card-img-top" alt="...">
@@ -24,6 +21,7 @@
                     </a>
                 </div>
             @empty
+                <p>no data</p>
         </div>
         @endforelse
     </div>
@@ -53,5 +51,4 @@
             })
         </script>
     @endpush
-
 @endsection

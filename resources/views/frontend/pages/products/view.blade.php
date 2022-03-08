@@ -12,7 +12,7 @@
         </ol>
     </nav>
 
-    <div class="card shadow-lg p-3 mb-5 bg-body rounded text-left">
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded text-left product-data">
         <div class="card-body">
             <div class="row">
                 <div class="col-4">
@@ -40,7 +40,7 @@
                         @if ($product->qty > 0)
                             <span class="badge bg-success">In Stock</span>
                         @else
-                            <span class="badge bg-success">Out of Stock</span>
+                            <span class="badge bg-danger">Out of Stock</span>
                         @endif
                     </div>
                     <div class="row mt-3">
@@ -69,48 +69,7 @@
 
     @push('scripts')
         <script>
-            $('.add-cart').click(function(e) {
-                var productId = $('#product_id').val();
-                var productQty = $('.qty-txt').val();
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $.ajax({
-                    method: "POST",
-                    url: "/add-cart",
-                    data: {
-                        'product_id': productId,
-                        'product_qty': productQty,
-                    },
-                    success: function(response) {
-                        swal.fire(response.status)
-                    }
-                });
-            });
-
-            $('document').ready(function() {
-                $('.btn-decr').click(function() {
-                     var qtyTxt = $('.qty-txt').val();
-                    var value = parseInt(qtyTxt, 10);
-                    value = isNaN(value) ? 0 : value
-                    if (value > 0) {
-                        value--
-                        $('.qty-txt').val(value);
-                    }
-                });
-
-                $('.btn-incr').click(function() {
-                    var qtyTxt = $('.qty-txt').val();
-                    var value = parseInt(qtyTxt, 10);
-                    value = isNaN(value) ? 0 : value
-                    value++
-                    $('.qty-txt').val(value);
-                });
-            });
         </script>
     @endpush
 
